@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hai</title>
+	<script src="libs/d3/d3.js" charset="utf-8"></script>
+	<script src="libs/topojson/topojson.js" charset="utf-8"></script>
+	<script src="libs/topojson/topojson-client.js" charset="utf-8"></script>
+
+	<style>
+		.jateng {
+			fill: #ff9900;
+			stroke: white;
+			stroke-width: 1.5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="info"></div>
+	<script type="text/javascript">
+	var width = 800,
+	height = 600,
+	judul = ["HALO JUDUL"];
+
+	var svg = d3.select("body").append("svg")
+	.attr("height", height)
+	.attr("width", width);
+
+	var projection = d3.geoMercator()
+	.scale(10000)
+	.center([110,-7])
+	.translate([width/2, height/2]);
+
+	var path = d3.geoPath(projection);
+
+	d3.json("source/jateng.json", function (error, topo) {
+		svg.selectAll("path").data(topojson.feature(topo, topo.objects.jateng).features)
+		.enter().append("path")
+		.attr("class", "jateng")
+		.attr("d", path)
+		.on("click", getInfo)
+		.attr("id", function (d) {
+			return d.properties.hasc;
+		});
+	});
+
+	var judul = svg.selectAll("g.judul")
+	.data(judul)
+	.enter().append("g")
+	.attr("class", "judul");
+	judul.append("text")
+	.attr("x", 10)
+	.attr("y", 100)
+	.text(function (d,i) {
+		return d
+	});
+
+	function getInfo(d) {
+		d3.select(".info")
+		.html(d.properties.nama);
+	}
+
+
+	</script>
+</body>
+</html>

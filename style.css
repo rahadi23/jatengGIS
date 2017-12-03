@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  background: grey;
+}
+
+.all10 {
+  padding: 10px !important;
+  margin: 0 !important;
+}
+
+.all20 {
+  padding: 20px !important;
+  margin: 0 !important;
+}
+
+.judulkategori {
+  font-size: 12px;
+}
+
+.isikategori {
+  color: black;
+}
+
+.div-contents {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.gapless {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.background {
+	fill: none;
+	pointer-events: all;
+}
+
+.feature {
+	fill: #ccc;
+	cursor: pointer;
+}
+
+.feature.active {
+	fill: #ffb300 !important;
+}
+
+.feature.hovered {
+	fill: #ffb300 !important;
+  opacity: .5;
+}
+
+.mesh {
+	fill: none;
+  stroke: white;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.center-vertical {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+#tooltip {
+  background: white;
+  margin: 5px;
+  padding: 5px;
+}
+
+#tooltip-img {
+  max-height: 75px;
+}
